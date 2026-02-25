@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sm_technology_job_task/core/values/app_assets.dart';
+import 'package:sm_technology_job_task/routes/app_routes.dart';
 
 class OnboardingController extends GetxController {
   final PageController pageController = PageController();
@@ -43,6 +44,6 @@ class OnboardingController extends GetxController {
   }
 
   void goSignIn() {
-
+    Get.offAndToNamed(AppRoutes.signIn);
   }
 }

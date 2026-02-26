@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sm_technology_job_task/core/values/app_colors.dart';
 import 'package:sm_technology_job_task/modules/profile/controllers/profile_setup_controller.dart';
 
 class SetupProfileView extends GetView<SetupController> {
@@ -35,7 +36,7 @@ class SetupProfileView extends GetView<SetupController> {
                     onTap: controller.pickImage,
                     child: const CircleAvatar(
                       radius: 18,
-                      backgroundColor: Color(0xFF1868F2),
+                      backgroundColor: AppColors.primary,
                       child: Icon(Icons.edit, color: Colors.white, size: 18),
                     ),
                   ),
@@ -56,7 +57,7 @@ class SetupProfileView extends GetView<SetupController> {
                       ? null
                       : controller.submitProfile,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1868F2),
+                    backgroundColor: AppColors.primary,
                   ),
                   child: controller.isLoading.value
                       ? const CircularProgressIndicator(color: Colors.white)

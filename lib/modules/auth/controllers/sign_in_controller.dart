@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sm_technology_job_task/data/repositories/auth_repository.dart';
+import 'package:sm_technology_job_task/data/services/auth_services.dart';
+import 'package:sm_technology_job_task/routes/app_routes.dart';
 
 class AuthController extends GetxController {
   final AuthRepository repository;
@@ -31,7 +33,9 @@ class AuthController extends GetxController {
         passwordController.text,
       );
       if (result.success) {
-        Get.offAllNamed('/home');
+        Get.offAllNamed(AppRoutes.homeScreen);
+        AuthProvider().saveToken(result.token!);
+        print("${result.token}=======================================================================r");
       } else {
         Get.snackbar("Login Failed", result.message);
       }

@@ -6,4 +6,5 @@ class AppAssets {
   static const String authScreenLogo = "$basePath/auth_screen_logo.png";
   static const String success1 = "$basePath/success.png";
   static const String success2 = "$basePath/success2.png";
+  static const String homeHeaderBg = "$basePath/home_header_bg.png";
 }

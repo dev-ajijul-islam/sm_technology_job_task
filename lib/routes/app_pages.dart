@@ -5,6 +5,10 @@ import 'package:sm_technology_job_task/modules/auth/presentation/screens/otp_scr
 import 'package:sm_technology_job_task/modules/auth/presentation/screens/reset_password_screen.dart';
 import 'package:sm_technology_job_task/modules/auth/presentation/screens/sign_in_screen.dart';
 import 'package:sm_technology_job_task/modules/auth/presentation/screens/sign_up_screen.dart';
+import 'package:sm_technology_job_task/modules/home/binding/home_binding.dart';
+import 'package:sm_technology_job_task/modules/home/presentation/screens/create_product_screen.dart';
+import 'package:sm_technology_job_task/modules/home/presentation/screens/home_screen.dart';
+import 'package:sm_technology_job_task/modules/home/presentation/screens/product_details.dart';
 import 'package:sm_technology_job_task/modules/profile/binding/profile_binding.dart';
 import 'package:sm_technology_job_task/modules/profile/presentation/screens/location_screen.dart';
 import 'package:sm_technology_job_task/modules/profile/presentation/screens/select_language_screen.dart';
@@ -67,5 +71,21 @@ class AppPages {
       page: () => LocationView(),
       binding: ProfileBinding(),
     ),
+    GetPage(
+      name: AppRoutes.homeScreen,
+      page: () => HomeView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.createProduct,
+      page: () => CreateProductView(),
+      binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.productDetails,
+      page: () => ProductDetailView(),
+      binding: HomeBinding(),
+    ),
+
   ];
 }

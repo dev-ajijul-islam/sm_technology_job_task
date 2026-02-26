@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sm_technology_job_task/data/repositories/user_repository.dart';
@@ -7,10 +8,20 @@ class SetupController extends GetxController {
   final UserRepository repository;
   SetupController({required this.repository});
 
+  @override
+  void onInit() {
+    checkPermission();
+    super.onInit();
+  }
+
   // States
   var isLoading = false.obs;
   var selectedLanguage = 'English'.obs;
   var selectedImagePath = ''.obs;
+
+  RxBool hasLocation = false.obs;
+  RxBool isPermissionGranted = false.obs;
+  RxString locationText = "Checking location permission...".obs;
 
   final nameController = TextEditingController();
   final countryController = TextEditingController();
@@ -29,11 +40,40 @@ class SetupController extends GetxController {
 
     isLoading.value = true;
     try {
-      // Logic to call repository.completeProfile goes here
+
       _showSuccessDialog();
     } finally {
       isLoading.value = false;
     }
+  }
+
+  Future<void> checkPermission() async {
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    if (!serviceEnabled) {
+      locationText.value = "Location services are disabled.";
+      isPermissionGranted.value = false;
+      hasLocation.value = false;
+      return;
+    }
+
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      locationText.value = "Location permission required.";
+      isPermissionGranted.value = false;
+      hasLocation.value = false;
+      return;
+    }
+
+    isPermissionGranted.value = true;
+    locationText.value = "Permission granted. Tap to get location.";
+
   }
 
   void _showSuccessDialog() {

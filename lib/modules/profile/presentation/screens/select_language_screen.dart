@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sm_technology_job_task/core/values/app_colors.dart';
 import 'package:sm_technology_job_task/modules/profile/controllers/profile_setup_controller.dart';
 
 class LanguageView extends GetView<SetupController> {
@@ -26,7 +27,7 @@ class LanguageView extends GetView<SetupController> {
         child: ElevatedButton(
           onPressed: () => Get.toNamed('/setup-profile'),
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF1868F2),
+            backgroundColor: AppColors.primary,
             minimumSize: const Size(0, 56),
           ),
           child: const Text("Continue", style: TextStyle(color: Colors.white)),

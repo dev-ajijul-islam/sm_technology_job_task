@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sm_technology_job_task/data/services/auth_services.dart';
 import 'package:sm_technology_job_task/routes/app_routes.dart';
 
 class SplashController extends GetxController {
@@ -10,7 +11,13 @@ class SplashController extends GetxController {
   }
 
   void _goToNextScreen()async{
-   await Future.delayed(Duration(seconds: 2));
-    Get.offAndToNamed(AppRoutes.onboarding);
+    print("${AuthProvider.token}===========================================");
+    await Future.delayed(Duration(seconds: 2));
+    if(AuthProvider.isLoggedIn){
+      Get.offAndToNamed(AppRoutes.homeScreen);
+
+    }else{
+      Get.offAndToNamed(AppRoutes.locationScreen);
+    }
   }
 }

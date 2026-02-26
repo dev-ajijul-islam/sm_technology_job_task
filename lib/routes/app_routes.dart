@@ -9,4 +9,8 @@ class AppRoutes {
   static const String setupProfile = '/setup-profile';
   static const String languageSelect = '/select-language';
   static const String locationScreen = '/location-screen';
+  static const String homeScreen = '/home';
+  static const String createProduct = '/create-product';
+  static const String editProduct = '/edit-product';
+  static const String productDetails = '/product-details';
 }
